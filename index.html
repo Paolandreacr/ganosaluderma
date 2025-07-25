@@ -1,138 +1,210 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GanoSaludErma - Tienda Oficial</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <script src="script.js" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ganosaluderma | Tienda</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #121212;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 20px;
+    }
+    .producto {
+      border: 1px solid #444;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 30px;
+      background-color: #1e1e1e;
+    }
+    .producto h2 {
+      color: #ffcc00;
+    }
+    .producto img {
+      max-width: 100%;
+      height: auto;
+      margin-bottom: 10px;
+    }
+    .precio {
+      font-size: 18px;
+      color: #0f0;
+      margin: 10px 0;
+    }
+    .btn {
+      background-color: #ffcc00;
+      border: none;
+      padding: 10px 20px;
+      color: #000;
+      cursor: pointer;
+      font-weight: bold;
+      border-radius: 5px;
+    }
+    .btn:hover {
+      background-color: #e6b800;
+    }
+  </style>
 </head>
-<body class="bg-black text-white font-sans">
-  <header class="bg-gradient-to-r from-yellow-600 to-yellow-400 p-6 text-black text-center shadow-lg">
-    <h1 class="text-4xl font-bold tracking-widest">GANOSALUDERMA</h1>
-    <p class="text-lg">Salud y belleza con productos de Ganoderma Lucidum</p>
-  </header>
+<body>
+  <div class="container">
 
-  <main class="p-6 max-w-7xl mx-auto">
-    <section id="productos" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      <const productos = [
-  {
-    nombre: "CAFÉ CLÁSICO",
-    precio: 135000,
-    flyer: "images/producto1-flyer.png",
-    nutricional: "images/producto1-nutricional.png"
-  },
-  {
-    nombre: "CAFÉ CAPUCHINO 3EN1",
-    precio: 135000,
-    flyer: "images/producto2-flyer.png",
-    nutricional: "images/producto2-nutricional.png"
-  },
-  {
-    nombre: "CAFÉ LATERICO",
-    precio: 145000,
-    flyer: "images/producto3-flyer.png",
-    nutricional: "images/producto3-nutricional.png"
-  },
-  {
-    nombre: "CAFÉ MOCHARICO",
-    precio: 145000,
-    flyer: "images/producto4-flyer.png",
-    nutricional: "images/producto4-nutricional.png"
-  },
-  {
-    nombre: "CAFÉ PREMIUM LUVOCO",
-    precio: 145000,
-    flyer: "images/producto5-flyer.png",
-    nutricional: "images/producto5-nutricional.png"
-  },
-  {
-    nombre: "RESKINE COLLAGEN",
-    precio: 250000,
-    flyer: "images/producto6-flyer.png",
-    nutricional: "images/producto6-nutricional.png"
-  },
-  {
-    nombre: "SCHOKOLADE",
-    precio: 150000,
-    flyer: "images/producto7-flyer.png",
-    nutricional: "images/producto7-nutricional.png"
-  },
-  {
-    nombre: "SHOKORICO",
-    precio: 150000,
-    flyer: "images/producto8-flyer.png",
-    nutricional: "images/producto8-nutricional.png"
-  },
-  {
-    nombre: "CEREAL CON SPIRULINA",
-    precio: 145000,
-    flyer: "images/producto9-flyer.png",
-    nutricional: "images/producto9-nutricional.png"
-  },
-  {
-    nombre: "TEA CON ROOIBOS",
-    precio: 145000,
-    flyer: "images/producto10-flyer.png",
-    nutricional: "images/producto10-nutricional.png"
-  },
-  {
-    nombre: "CÁPSULAS EXCELLIUM",
-    precio: 295000,
-    flyer: "images/producto11-flyer.png",
-    nutricional: "images/producto11-nutricional.png"
-  },
-  {
-    nombre: "CÁPSULAS GANODERMA",
-    precio: 295000,
-    flyer: "images/producto12-flyer.png",
-    nutricional: "images/producto12-nutricional.png"
-  },
-  {
-    nombre: "CÁPSULAS CORDYGOLD",
-    precio: 350000,
-    flyer: "images/producto13-flyer.png",
-    nutricional: "images/producto13-nutricional.png"
-  },
-  {
-    nombre: "JABÓN TRANSPARENTE",
-    precio: 90000,
-    flyer: "images/producto14-flyer.png",
-    nutricional: "images/producto14-nutricional.png"
-  },
-  {
-    nombre: "JABÓN CON LECHE DE CABRA",
-    precio: 90000,
-    flyer: "images/producto15-flyer.png",
-    nutricional: "images/producto15-nutricional.png"
-  },
-  {
-    nombre: "DENTRÍFICO GANOFRESH",
-    precio: 90000,
-    flyer: "images/producto16-flyer.png",
-    nutricional: "images/producto16-nutricional.png"
-  },
-  {
-    nombre: "ACONDICIONADOR PIEL Y BRILLO",
-    precio: 95000,
-    flyer: "images/producto17-flyer.png",
-    nutricional: "images/producto17-nutricional.png"
-  },
-  {
-    nombre: "SHAMPOO PIEL Y BRILLO",
-    precio: 95000,
-    flyer: "images/producto18-flyer.png",
-    nutricional: "images/producto18-nutricional.png"
-  },
-  {
-    nombre: "EXFOLIANTE PIE Y BRILLO",
-    precio: 95000,
-    flyer: "images/producto19-flyer.png",
-    nutricional: "images/producto19-nutricional.png"
-  }
-];
-    </section>
-  </main>
+    <div class="producto">
+      <h2>CAFÉ CLÁSICO</h2>
+      <img src="images/producto1-flyer.png" alt="CAFÉ CLÁSICO Flyer">
+      <img src="images/producto1-nutricional.png" alt="CAFÉ CLÁSICO Tabla Nutricional">
+      <p class="precio">$135.000</p>
+      <button class="btn">Agregar al carrito</button>
+    </div>
+
+    <div class="producto">
+      <h2>CAFÉ CAPUCHINO 3EN1</h2>
+      <img src="images/producto2-flyer.png" alt="CAFÉ CAPUCHINO 3EN1 Flyer">
+      <img src="images/producto2-nutricional.png" alt="CAFÉ CAPUCHINO 3EN1 Tabla Nutricional">
+      <p class="precio">$135.000</p>
+      <button class="btn">Agregar al carrito</button>
+    </div>
+
+    <div class="producto">
+      <h2>CAFÉ LATERICO</h2>
+      <img src="images/producto3-flyer.png" alt="CAFÉ LATERICO Flyer">
+      <img src="images/producto3-nutricional.png" alt="CAFÉ LATERICO Tabla Nutricional">
+      <p class="precio">$145.000</p>
+      <button class="btn">Agregar al carrito</button>
+    </div>
+
+    <div class="producto">
+      <h2>CAFÉ MOCHARICO</h2>
+      <img src="images/producto4-flyer.png" alt="CAFÉ MOCHARICO Flyer">
+      <img src="images/producto4-nutricional.png" alt="CAFÉ MOCHARICO Tabla Nutricional">
+      <p class="precio">$145.000</p>
+      <button class="btn">Agregar al carrito</button>
+    </div>
+
+    <div class="producto">
+      <h2>CAFÉ PREMIUM LUVOCO</h2>
+      <img src="images/producto5-flyer.png" alt="CAFÉ PREMIUM LUVOCO Flyer">
+      <img src="images/producto5-nutricional.png" alt="CAFÉ PREMIUM LUVOCO Tabla Nutricional">
+      <p class="precio">$145.000</p>
+      <button class="btn">Agregar al carrito</button>
+    </div>
+
+    <div class="producto">
+      <h2>RESKINE COLLAGEN</h2>
+      <img src="images/producto6-flyer.png" alt="RESKINE COLLAGEN Flyer">
+      <img src="images/producto6-nutricional.png" alt="RESKINE COLLAGEN Tabla Nutricional">
+      <p class="precio">$250.000</p>
+      <button class="btn">Agregar al carrito</button>
+    </div>
+
+    <div class="producto">
+      <h2>SCHOKOLADE</h2>
+      <img src="images/producto7-flyer.png" alt="SCHOKOLADE Flyer">
+      <img src="images/producto7-nutricional.png" alt="SCHOKOLADE Tabla Nutricional">
+      <p class="precio">$150.000</p>
+      <button class="btn">Agregar al carrito</button>
+    </div>
+
+    <div class="producto">
+      <h2>SHOKORICO</h2>
+      <img src="images/producto8-flyer.png" alt="SHOKORICO Flyer">
+      <img src="images/producto8-nutricional.png" alt="SHOKORICO Tabla Nutricional">
+      <p class="precio">$150.000</p>
+      <button class="btn">Agregar al carrito</button>
+    </div>
+
+    <div class="producto">
+      <h2>CEREAL CON SPIRULINA</h2>
+      <img src="images/producto9-flyer.png" alt="CEREAL CON SPIRULINA Flyer">
+      <img src="images/producto9-nutricional.png" alt="CEREAL CON SPIRULINA Tabla Nutricional">
+      <p class="precio">$145.000</p>
+      <button class="btn">Agregar al carrito</button>
+    </div>
+
+    <div class="producto">
+      <h2>TEA CON ROOIBOS</h2>
+      <img src="images/producto10-flyer.png" alt="TEA CON ROOIBOS Flyer">
+      <img src="images/producto10-nutricional.png" alt="TEA CON ROOIBOS Tabla Nutricional">
+      <p class="precio">$145.000</p>
+      <button class="btn">Agregar al carrito</button>
+    </div>
+
+    <div class="producto">
+      <h2>CÁPSULAS EXCELLIUM</h2>
+      <img src="images/producto11-flyer.png" alt="CÁPSULAS EXCELLIUM Flyer">
+      <img src="images/producto11-nutricional.png" alt="CÁPSULAS EXCELLIUM Tabla Nutricional">
+      <p class="precio">$295.000</p>
+      <button class="btn">Agregar al carrito</button>
+    </div>
+
+    <div class="producto">
+      <h2>CÁPSULAS GANODERMA</h2>
+      <img src="images/producto12-flyer.png" alt="CÁPSULAS GANODERMA Flyer">
+      <img src="images/producto12-nutricional.png" alt="CÁPSULAS GANODERMA Tabla Nutricional">
+      <p class="precio">$295.000</p>
+      <button class="btn">Agregar al carrito</button>
+    </div>
+
+    <div class="producto">
+      <h2>CÁPSULAS CORDYGOLD</h2>
+      <img src="images/producto13-flyer.png" alt="CÁPSULAS CORDYGOLD Flyer">
+      <img src="images/producto13-nutricional.png" alt="CÁPSULAS CORDYGOLD Tabla Nutricional">
+      <p class="precio">$350.000</p>
+      <button class="btn">Agregar al carrito</button>
+    </div>
+
+    <div class="producto">
+      <h2>JABÓN TRANSPARENTE</h2>
+      <img src="images/producto14-flyer.png" alt="JABÓN TRANSPARENTE Flyer">
+      <img src="images/producto14-nutricional.png" alt="JABÓN TRANSPARENTE Tabla Nutricional">
+      <p class="precio">$90.000</p>
+      <button class="btn">Agregar al carrito</button>
+    </div>
+
+    <div class="producto">
+      <h2>JABÓN CON LECHE DE CABRA</h2>
+      <img src="images/producto15-flyer.png" alt="JABÓN CON LECHE DE CABRA Flyer">
+      <img src="images/producto15-nutricional.png" alt="JABÓN CON LECHE DE CABRA Tabla Nutricional">
+      <p class="precio">$90.000</p>
+      <button class="btn">Agregar al carrito</button>
+    </div>
+
+    <div class="producto">
+      <h2>DENTRÍFICO GANOFRESH</h2>
+      <img src="images/producto16-flyer.png" alt="DENTRÍFICO GANOFRESH Flyer">
+      <img src="images/producto16-nutricional.png" alt="DENTRÍFICO GANOFRESH Tabla Nutricional">
+      <p class="precio">$90.000</p>
+      <button class="btn">Agregar al carrito</button>
+    </div>
+
+    <div class="producto">
+      <h2>ACONDICIONADOR PIEL Y BRILLO</h2>
+      <img src="images/producto17-flyer.png" alt="ACONDICIONADOR PIEL Y BRILLO Flyer">
+      <img src="images/producto17-nutricional.png" alt="ACONDICIONADOR PIEL Y BRILLO Tabla Nutricional">
+      <p class="precio">$95.000</p>
+      <button class="btn">Agregar al carrito</button>
+    </div>
+
+    <div class="producto">
+      <h2>SHAMPOO PIEL Y BRILLO</h2>
+      <img src="images/producto18-flyer.png" alt="SHAMPOO PIEL Y BRILLO Flyer">
+      <img src="images/producto18-nutricional.png" alt="SHAMPOO PIEL Y BRILLO Tabla Nutricional">
+      <p class="precio">$95.000</p>
+      <button class="btn">Agregar al carrito</button>
+    </div>
+
+    <div class="producto">
+      <h2>EXFOLIANTE PIE Y BRILLO</h2>
+      <img src="images/producto19-flyer.png" alt="EXFOLIANTE PIE Y BRILLO Flyer">
+      <img src="images/producto19-nutricional.png" alt="EXFOLIANTE PIE Y BRILLO Tabla Nutricional">
+      <p class="precio">$95.000</p>
+      <button class="btn">Agregar al carrito</button>
+    </div>
 
   <aside id="carrito" class="fixed top-0 right-0 w-80 h-full bg-gray-900 text-white shadow-2xl p-4 hidden">
     <h2 class="text-2xl font-bold mb-4">Tu carrito</h2>
