@@ -121,6 +121,6 @@ function enviarWhatsApp() {
   const total = carrito.reduce((sum, p) => sum + p.precio, 0) - descuento;
   mensaje += `\nTotal: $${total.toLocaleString()}\nYa hice el pago.`;
 
-  const url = `https://wa.me/573106319319?text=${encodeURIComponent(mensaje)}`;
+  const url = `https://wa.me/573187488252?text=${encodeURIComponent(mensaje)}`;
   window.open(url, "_blank");
 }
