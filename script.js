@@ -17,28 +17,36 @@ const productos = [
   { nombre: "DENTRÍFICO GANOFRESH", precio: 90000, flyer: "images/producto16-flyer.png", nutricional: "images/producto16-nutricional.png" },
   { nombre: "ACONDICIONADOR PIEL Y BRILLO", precio: 95000, flyer: "images/producto17-flyer.png", nutricional: "images/producto17-nutricional.png" },
   { nombre: "SHAMPOO PIEL Y BRILLO", precio: 95000, flyer: "images/producto18-flyer.png", nutricional: "images/producto18-nutricional.png" },
-  { nombre: "EXFOLIANTE PIE Y BRILLO", precio: 95000, flyer: "images/producto19-flyer.png", nutricional: "images/producto19-nutricional.png" },
+  { nombre: "EXFOLIANTE PIE Y BRILLO", precio: 95000, flyer: "images/producto19-flyer.png", nutricional: "images/producto19-nutricional.png" }
 ];
 
-const contenedor = document.getElementById("productos");
-const listaCarrito = document.getElementById("lista-carrito");
-const totalSpan = document.getElementById("total");
+const contenedor = document.getElementById('productos');
 
-let carrito = [];
-let descuento = 0;
-
-productos.forEach((p, i) => {
-  const card = document.createElement("div");
-  card.className = "bg-gray-800 p-4 rounded-lg shadow-md";
+productos.forEach(p => {
+  const card = document.createElement('div');
+  card.className = "bg-gray-900 rounded-lg p-4 shadow-lg text-center";
   card.innerHTML = `
-    <h2 class="text-xl font-bold mb-2 text-white">${p.nombre}</h2>
-    <img src="${p.flyer}" alt="Flyer ${p.nombre}" class="w-full rounded mb-2" />
-    <img src="${p.nutricional}" alt="Tabla nutricional ${p.nombre}" class="w-full rounded mb-2" />
-    <p class="text-yellow-400 font-semibold">$${p.precio.toLocaleString()}</p>
-    <button onclick="agregarCarrito(${i})" class="mt-2 bg-yellow-500 text-black px-4 py-2 rounded hover:bg-yellow-400">Agregar al carrito</button>
+    <img src="${p.flyer}" alt="${p.nombre}" class="w-[150px] h-[150px] mx-auto cursor-pointer rounded" onclick="openModal('${p.flyer}')">
+    <h3 class="text-lg font-bold text-yellow-400 mt-2">${p.nombre}</h3>
+    <p class="text-green-400 font-semibold">$${p.precio.toLocaleString()}</p>
+    <img src="${p.nutricional}" alt="Tabla nutricional" class="w-[100px] h-[100px] mx-auto mt-2 cursor-pointer" onclick="openModal('${p.nutricional}')">
+    <button onclick="agregarAlCarrito('${p.nombre}', ${p.precio})" class="mt-3 bg-yellow-400 text-black px-4 py-2 rounded hover:bg-yellow-300 font-bold">Agregar al carrito</button>
   `;
   contenedor.appendChild(card);
 });
+
+function openModal(src) {
+  const modal = document.getElementById('imageModal');
+  const modalImage = document.getElementById('modalImage');
+  modalImage.src = src;
+  modal.classList.remove('hidden');
+  modal.classList.add('flex');
+}
+
+function closeModal() {
+  document.getElementById('imageModal').classList.add('hidden');
+  document.getElementById('imageModal').classList.remove('flex');
+}
 
 function agregarCarrito(index) {
   carrito.push(productos[index]);
