@@ -72,7 +72,63 @@
     </div>
   </header>
 
-  <div class="container">
+ <style>
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+  }
+
+  .producto {
+    background-color: #1a1a1a;
+    border: 1px solid #d4af37;
+    border-radius: 10px;
+    padding: 15px;
+    width: 250px;
+    text-align: center;
+    color: white;
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+  }
+
+  .producto h2 {
+    font-size: 1em;
+    color: #d4af37;
+    margin-bottom: 10px;
+  }
+
+  .producto img {
+    width: 4cm;
+    height: 4cm;
+    object-fit: contain;
+    margin: 5px 0;
+    background-color: white;
+    border-radius: 5px;
+  }
+
+  .precio {
+    font-size: 1em;
+    font-weight: bold;
+    color: #ffd700;
+    margin: 10px 0;
+  }
+
+  .btn {
+    background-color: #d4af37;
+    color: black;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .btn:hover {
+    background-color: #e6c766;
+  }
+</style>
+
+<div class="container">
 
     <div class="producto">
       <h2>CAFÉ CLÁSICO</h2>
