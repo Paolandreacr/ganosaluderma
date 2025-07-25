@@ -5,7 +5,13 @@ const productos = [
     flyer: "images/cafe-flyer.png",
     nutricional: "images/cafe-nutricional.png"
   },
-  // Agrega aquí los 18 productos restantes
+  {
+    nombre: "Chocolate Gano",
+    precio: 37000,
+    flyer: "images/choco-flyer.png",
+    nutricional: "images/choco-nutricional.png"
+  }
+  // Agrega aquí los demás productos
 ];
 
 const contenedor = document.getElementById("productos");
@@ -13,15 +19,15 @@ const listaCarrito = document.getElementById("lista-carrito");
 const totalSpan = document.getElementById("total");
 
 let carrito = [];
-let descuento = 0;
+let porcentajeDescuento = 0;
 
 productos.forEach((p, i) => {
   const card = document.createElement("div");
   card.className = "bg-gray-800 p-4 rounded-lg shadow-md";
   card.innerHTML = `
     <h2 class="text-xl font-bold mb-2">${p.nombre}</h2>
-    <img src="${p.flyer}" alt="Flyer ${p.nombre}" class="w-full rounded mb-2" />
-    <img src="${p.nutricional}" alt="Tabla nutricional ${p.nombre}" class="w-full rounded mb-2" />
+    <img src="${p.flyer}" alt="Flyer ${p.nombre}" class="w-full rounded mb-2 cursor-pointer" onclick="openModal('${p.flyer}')" />
+    <img src="${p.nutricional}" alt="Tabla nutricional ${p.nombre}" class="w-full rounded mb-2 cursor-pointer" onclick="openModal('${p.nutricional}')" />
     <p class="text-yellow-400 font-semibold">$${p.precio.toLocaleString()}</p>
     <button onclick="agregarCarrito(${i})" class="mt-2 bg-yellow-500 text-black px-4 py-2 rounded">Agregar al carrito</button>
   `;
@@ -39,31 +45,58 @@ function agregarCarrito(index) {
 
 function renderCarrito() {
   listaCarrito.innerHTML = "";
-  let total = 0;
+  let subtotal = 0;
   carrito.forEach((item, i) => {
-    total += item.precio;
+    subtotal += item.precio;
     const li = document.createElement("li");
     li.textContent = `${item.nombre} - $${item.precio.toLocaleString()}`;
     listaCarrito.appendChild(li);
   });
-  total = total - descuento;
-  totalSpan.textContent = total.toLocaleString();
+
+  let descuento = subtotal * (porcentajeDescuento / 100);
+  let totalFinal = subtotal - descuento;
+
+  totalSpan.textContent = totalFinal.toLocaleString();
 }
 
 function vaciarCarrito() {
   carrito = [];
-  descuento = 0;
+  porcentajeDescuento = 0;
   document.getElementById("descuentoInput").value = "";
   renderCarrito();
 }
 
 function aplicarDescuento() {
-  const input = document.getElementById("descuentoInput").value.trim();
-  if (input === "GANOSALUD10") {
-    descuento = 10000;
-    renderCarrito();
-    alert("Descuento de $10.000 aplicado.");
+  const input = document.getElementById("descuentoInput").value.trim().toUpperCase();
+  const codigos = {
+    "DESC5": 5,
+    "DESC10": 10,
+    "DESC15": 15,
+    "DESC20": 20
+  };
+
+  if (codigos[input] !== undefined) {
+    porcentajeDescuento = codigos[input];
+    alert(`Descuento del ${porcentajeDescuento}% aplicado.`);
   } else {
+    porcentajeDescuento = 0;
     alert("Código no válido.");
   }
+
+  renderCarrito();
+}
+
+// Modal para ampliar imágenes
+function openModal(src) {
+  const modal = document.getElementById('imageModal');
+  const modalImage = document.getElementById('modalImage');
+  modalImage.src = src;
+  modal.classList.remove('hidden');
+  modal.classList.add('flex');
+}
+
+function closeModal() {
+  const modal = document.getElementById('imageModal');
+  modal.classList.add('hidden');
+  modal.classList.remove('flex');
 }
