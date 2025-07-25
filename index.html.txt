@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GanoSaludErma - Tienda Oficial</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script src="script.js" defer></script>
+</head>
+<body class="bg-black text-white font-sans">
+  <header class="bg-gradient-to-r from-yellow-600 to-yellow-400 p-6 text-black text-center shadow-lg">
+    <h1 class="text-4xl font-bold tracking-widest">GANOSALUDERMA</h1>
+    <p class="text-lg">Salud y belleza con productos de ganoterapia</p>
+  </header>
+
+  <main class="p-6 max-w-7xl mx-auto">
+    <section id="productos" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Aquí se insertan los productos con JS -->
+    </section>
+  </main>
+
+  <aside id="carrito" class="fixed top-0 right-0 w-80 h-full bg-gray-900 text-white shadow-2xl p-4 hidden">
+    <h2 class="text-2xl font-bold mb-4">Tu carrito</h2>
+    <ul id="lista-carrito" class="space-y-2"></ul>
+    <p class="mt-4 text-lg font-semibold">Total: $<span id="total">0</span></p>
+    <label class="block mt-4">
+      <span class="text-sm">Código de descuento:</span>
+      <input type="text" id="descuentoInput" class="w-full p-2 mt-1 rounded bg-black border border-yellow-500 text-white" placeholder="Ej. GANOSALUD10">
+    </label>
+    <button onclick="aplicarDescuento()" class="mt-2 bg-yellow-500 text-black px-4 py-2 rounded">Aplicar Descuento</button>
+    <div class="mt-6">
+      <h3 class="font-semibold">Métodos de pago:</h3>
+      <ul class="text-sm mt-2">
+        <li>💳 Bancolombia: 123456789</li>
+        <li>🏦 Davivienda: 987654321</li>
+        <li>📲 Nequi: 3011234567</li>
+      </ul>
+    </div>
+    <button onclick="vaciarCarrito()" class="mt-6 text-red-400 underline">Vaciar carrito</button>
+  </aside>
+
+  <button onclick="toggleCarrito()" class="fixed bottom-6 right-6 bg-yellow-500 text-black p-4 rounded-full shadow-xl z-50">🛒</button>
+</body>
+</html>
