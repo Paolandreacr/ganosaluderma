@@ -21,8 +21,13 @@ const productos = [
 ];
 
 const contenedor = document.getElementById('productos');
+let carrito = [];
+let descuento = 0;
+const listaCarrito = document.getElementById('lista-carrito');
+const totalSpan = document.getElementById('total');
 
-productos.forEach(p => {
+// Renderiza cada producto con botón correcto
+productos.forEach((p, i) => {
   const card = document.createElement('div');
   card.className = "bg-gray-900 rounded-lg p-4 shadow-lg text-center";
   card.innerHTML = `
@@ -30,11 +35,12 @@ productos.forEach(p => {
     <h3 class="text-lg font-bold text-yellow-400 mt-2">${p.nombre}</h3>
     <p class="text-green-400 font-semibold">$${p.precio.toLocaleString()}</p>
     <img src="${p.nutricional}" alt="Tabla nutricional" class="w-[100px] h-[100px] mx-auto mt-2 cursor-pointer" onclick="openModal('${p.nutricional}')">
-    <button onclick="agregarAlCarrito('${p.nombre}', ${p.precio})" class="mt-3 bg-yellow-400 text-black px-4 py-2 rounded hover:bg-yellow-300 font-bold">Agregar al carrito</button>
+    <button onclick="agregarCarrito(${i})" class="mt-3 bg-yellow-400 text-black px-4 py-2 rounded hover:bg-yellow-300 font-bold">Agregar al carrito</button>
   `;
   contenedor.appendChild(card);
 });
 
+// Modal imagen
 function openModal(src) {
   const modal = document.getElementById('imageModal');
   const modalImage = document.getElementById('modalImage');
@@ -48,11 +54,13 @@ function closeModal() {
   document.getElementById('imageModal').classList.remove('flex');
 }
 
+// Agregar producto al carrito
 function agregarCarrito(index) {
   carrito.push(productos[index]);
   renderCarrito();
 }
 
+// Renderizar contenido del carrito
 function renderCarrito() {
   listaCarrito.innerHTML = "";
   let total = carrito.reduce((sum, p) => sum + p.precio, 0);
@@ -68,6 +76,7 @@ function renderCarrito() {
   totalSpan.textContent = total.toLocaleString();
 }
 
+// Vaciar carrito
 function vaciarCarrito() {
   carrito = [];
   descuento = 0;
@@ -75,6 +84,7 @@ function vaciarCarrito() {
   renderCarrito();
 }
 
+// Aplicar descuento
 function aplicarDescuento() {
   const input = document.getElementById("descuentoInput").value.trim().toUpperCase();
   const totalBruto = carrito.reduce((sum, p) => sum + p.precio, 0);
@@ -97,6 +107,7 @@ function aplicarDescuento() {
   renderCarrito();
 }
 
+// Enviar pedido por WhatsApp
 function enviarWhatsApp() {
   if (carrito.length === 0) {
     alert("Tu carrito está vacío.");
