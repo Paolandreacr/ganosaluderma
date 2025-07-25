@@ -72,252 +72,78 @@
     </div>
   </header>
 
-<!-- Modal de imagen -->
-<div id="modalImagen" class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 hidden" onclick="cerrarModal()">
-  <img id="imagenModal" class="max-h-[90vh] max-w-[90vw] rounded-lg shadow-lg" />
+<header class="bg-[#e0c6d1] p-4 text-center shadow-md">
+  <h1 class="text-3xl font-bold text-[#531d38]">Catálogo New Beginning</h1>
+</header>
+
+<!-- Modales para ampliar imágenes -->
+<div id="imageModal" class="fixed inset-0 bg-black bg-opacity-70 hidden items-center justify-center z-50">
+  <div class="relative max-w-[90%] max-h-[90%]">
+    <button onclick="closeModal()" class="absolute top-2 right-2 bg-white rounded-full p-1 text-black hover:bg-gray-300 z-50">✕</button>
+    <img id="modalImage" src="" alt="Imagen ampliada" class="w-full h-full object-contain rounded-lg shadow-lg" />
+  </div>
 </div>
 
- <style>
-  .container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-    padding: 20px;
-  }
+<main class="p-4">
+  <!-- Producto 1 -->
+  <div class="bg-white rounded-lg shadow-lg p-4 mb-6">
+    <img src="images/colageno-rosado.png" alt="Colágeno Hidrolizado Rosado" class="mx-auto w-40 cursor-pointer" onclick="openModal(this.src)" />
+    <h2 class="text-xl font-semibold text-center text-[#531d38] mt-2">Colágeno Hidrolizado Rosado</h2>
+    <p class="text-center text-gray-700 font-medium">$ 85.000</p>
+    <img src="images/nutricional-rosado.png" alt="Tabla nutricional rosado" class="mx-auto mt-2 w-32 cursor-pointer" onclick="openModal(this.src)" />
+  </div>
 
-  .producto {
-    background-color: #1a1a1a;
-    border: 1px solid #d4af37;
-    border-radius: 10px;
-    padding: 15px;
-    width: 250px;
-    text-align: center;
-    color: white;
-    box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
-  }
+  <!-- Producto 2 -->
+  <div class="bg-white rounded-lg shadow-lg p-4 mb-6">
+    <img src="images/colageno-dorado.png" alt="Colágeno Hidrolizado Dorado" class="mx-auto w-40 cursor-pointer" onclick="openModal(this.src)" />
+    <h2 class="text-xl font-semibold text-center text-[#531d38] mt-2">Colágeno Hidrolizado Dorado</h2>
+    <p class="text-center text-gray-700 font-medium">$ 85.000</p>
+    <img src="images/nutricional-dorado.png" alt="Tabla nutricional dorado" class="mx-auto mt-2 w-32 cursor-pointer" onclick="openModal(this.src)" />
+  </div>
 
-  .producto h2 {
-    font-size: 1em;
-    color: #d4af37;
-    margin-bottom: 10px;
-  }
+  <!-- Producto 3 -->
+  <div class="bg-white rounded-lg shadow-lg p-4 mb-6">
+    <img src="images/colageno-capsulas.png" alt="Colágeno Cápsulas" class="mx-auto w-40 cursor-pointer" onclick="openModal(this.src)" />
+    <h2 class="text-xl font-semibold text-center text-[#531d38] mt-2">Colágeno Cápsulas</h2>
+    <p class="text-center text-gray-700 font-medium">$ 65.000</p>
+    <img src="images/nutricional-capsulas.png" alt="Tabla nutricional cápsulas" class="mx-auto mt-2 w-32 cursor-pointer" onclick="openModal(this.src)" />
+  </div>
 
-  .producto img {
-    width: 4cm;
-    height: 4cm;
-    object-fit: contain;
-    margin: 5px 0;
-    background-color: white;
-    border-radius: 5px;
-  }
+  <!-- Producto 4 -->
+  <div class="bg-white rounded-lg shadow-lg p-4 mb-6">
+    <img src="images/fibra.png" alt="Fibra Natural Premium" class="mx-auto w-40 cursor-pointer" onclick="openModal(this.src)" />
+    <h2 class="text-xl font-semibold text-center text-[#531d38] mt-2">Fibra Natural Premium</h2>
+    <p class="text-center text-gray-700 font-medium">$ 75.000</p>
+    <img src="images/nutricional-fibra.png" alt="Tabla nutricional fibra" class="mx-auto mt-2 w-32 cursor-pointer" onclick="openModal(this.src)" />
+  </div>
 
-  .precio {
-    font-size: 1em;
-    font-weight: bold;
-    color: #ffd700;
-    margin: 10px 0;
-  }
-
-  .btn {
-    background-color: #d4af37;
-    color: black;
-    border: none;
-    padding: 8px 12px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-
-  .btn:hover {
-    background-color: #e6c766;
-  }
-</style>
-
-<div class="container">
-
-    <div class="producto">
-      <h2>CAFÉ CLÁSICO</h2>
-      <img src="images/producto1-flyer.png" alt="CAFÉ CLÁSICO Flyer" class="w-full max-w-xs cursor-pointer" onclick="abrirModal(this.src)">
-      <img src="images/producto1-nutricional.png" alt="CAFÉ CLÁSICO Tabla Nutricional" class="w-full max-w-xs cursor-pointer" onclick="abrirModal(this.src)">
-      <p class="precio">$135.000</p>
-      <button class="btn">Agregar al carrito</button>
-    </div>
-
-    <div class="producto">
-      <h2>CAFÉ CAPUCHINO 3EN1</h2>
-      <img src="images/producto2-flyer.png" alt="CAFÉ CAPUCHINO 3EN1 Flyer" class="w-full max-w-xs cursor-pointer" onclick="abrirModal(this.src)">
-      <img src="images/producto2-nutricional.png" alt="CAFÉ CAPUCHINO 3EN1 Tabla Nutricional" class="w-full max-w-xs cursor-pointer" onclick="abrirModal(this.src)">
-      <p class="precio">$135.000</p>
-      <button class="btn">Agregar al carrito</button>
-    </div>
-
-    <div class="producto">
-      <h2>CAFÉ LATERICO</h2>
-      <img src="images/producto3-flyer.png" alt="CAFÉ LATERICO Flyer" class="w-full max-w-xs cursor-pointer" onclick="abrirModal(this.src)">
-      <img src="images/producto3-nutricional.png" alt="CAFÉ LATERICO Tabla Nutricional" class="w-full max-w-xs cursor-pointer" onclick="abrirModal(this.src)">
-      <p class="precio">$145.000</p>
-      <button class="btn">Agregar al carrito</button>
-    </div>
-
-    <div class="producto">
-      <h2>CAFÉ MOCHARICO</h2>
-      <img src="images/producto4-flyer.png" alt="CAFÉ MOCHARICO Flyer" class="w-full max-w-xs cursor-pointer" onclick="abrirModal(this.src)">
-      <img src="images/producto4-nutricional.png" alt="CAFÉ MOCHARICO Tabla Nutricional" class="w-full max-w-xs cursor-pointer" onclick="abrirModal(this.src)">
-      <p class="precio">$145.000</p>
-      <button class="btn">Agregar al carrito</button>
-    </div>
-
-    <div class="producto">
-      <h2>CAFÉ PREMIUM LUVOCO</h2>
-      <img src="images/producto5-flyer.png" alt="CAFÉ PREMIUM LUVOCO Flyer" class="w-full max-w-xs cursor-pointer" onclick="abrirModal(this.src)">
-      <img src="images/producto5-nutricional.png" alt="CAFÉ PREMIUM LUVOCO Tabla Nutricional" class="w-full max-w-xs cursor-pointer" onclick="abrirModal(this.src)">
-      <p class="precio">$145.000</p>
-      <button class="btn">Agregar al carrito</button>
-    </div>
-
-    <div class="producto">
-      <h2>RESKINE COLLAGEN</h2>
-      <img src="images/producto6-flyer.png" alt="RESKINE COLLAGEN Flyer" class="w-full max-w-xs cursor-pointer" onclick="abrirModal(this.src)">
-      <img src="images/producto6-nutricional.png" alt="RESKINE COLLAGEN Tabla Nutricional" class="w-full max-w-xs cursor-pointer" onclick="abrirModal(this.src)">
-      <p class="precio">$250.000</p>
-      <button class="btn">Agregar al carrito</button>
-    </div>
-
-    <div class="producto">
-      <h2>SCHOKOLADE</h2>
-      <img src="images/producto7-flyer.png" alt="SCHOKOLADE Flyer" class="w-full max-w-xs cursor-pointer" onclick="abrirModal(this.src)">
-      <img src="images/producto7-nutricional.png" alt="SCHOKOLADE Tabla Nutricional" class="w-full max-w-xs cursor-pointer" onclick="abrirModal(this.src)">
-      <p class="precio">$150.000</p>
-      <button class="btn">Agregar al carrito</button>
-    </div>
-
-    <div class="producto">
-      <h2>SHOKORICO</h2>
-      <img src="images/producto8-flyer.png" alt="SHOKORICO Flyer" class="w-full max-w-xs cursor-pointer" onclick="abrirModal(this.src)">
-      <img src="images/producto8-nutricional.png" alt="SHOKORICO Tabla Nutricional" class="w-full max-w-xs cursor-pointer" onclick="abrirModal(this.src)">
-      <p class="precio">$150.000</p>
-      <button class="btn">Agregar al carrito</button>
-    </div>
-
-    <div class="producto">
-      <h2>CEREAL CON SPIRULINA</h2>
-      <img src="images/producto9-flyer.png" alt="CEREAL CON SPIRULINA Flyer" class="w-full max-w-xs cursor-pointer" onclick="abrirModal(this.src)">
-      <img src="images/producto9-nutricional.png" alt="CEREAL CON SPIRULINA Tabla Nutricional" class="w-full max-w-xs cursor-pointer" onclick="abrirModal(this.src)">
-      <p class="precio">$145.000</p>
-      <button class="btn">Agregar al carrito</button>
-    </div>
-
-    <div class="producto">
-      <h2>TEA CON ROOIBOS</h2>
-      <img src="images/producto10-flyer.png" alt="TEA CON ROOIBOS Flyer" class="w-full max-w-xs cursor-pointer" onclick="abrirModal(this.src)">
-      <img src="images/producto10-nutricional.png" alt="TEA CON ROOIBOS Tabla Nutricional" class="w-full max-w-xs cursor-pointer" onclick="abrirModal(this.src)">
-      <p class="precio">$145.000</p>
-      <button class="btn">Agregar al carrito</button>
-    </div>
-
-    <div class="producto">
-      <h2>CÁPSULAS EXCELLIUM</h2>
-      <img src="images/producto11-flyer.png" alt="CÁPSULAS EXCELLIUM Flyer" class="w-full max-w-xs cursor-pointer" onclick="abrirModal(this.src)">
-      <img src="images/producto11-nutricional.png" alt="CÁPSULAS EXCELLIUM Tabla Nutricional" class="w-full max-w-xs cursor-pointer" onclick="abrirModal(this.src)">
-      <p class="precio">$295.000</p>
-      <button class="btn">Agregar al carrito</button>
-    </div>
-
-    <div class="producto">
-      <h2>CÁPSULAS GANODERMA</h2>
-      <img src="images/producto12-flyer.png" alt="CÁPSULAS GANODERMA Flyer" class="w-full max-w-xs cursor-pointer" onclick="abrirModal(this.src)">
-      <img src="images/producto12-nutricional.png" alt="CÁPSULAS GANODERMA Tabla Nutricional" class="w-full max-w-xs cursor-pointer" onclick="abrirModal(this.src)">
-      <p class="precio">$295.000</p>
-      <button class="btn">Agregar al carrito</button>
-    </div>
-
-    <div class="producto">
-      <h2>CÁPSULAS CORDYGOLD</h2>
-      <img src="images/producto13-flyer.png" alt="CÁPSULAS CORDYGOLD Flyer" class="w-full max-w-xs cursor-pointer" onclick="abrirModal(this.src)">
-      <img src="images/producto13-nutricional.png" alt="CÁPSULAS CORDYGOLD Tabla Nutricional" class="w-full max-w-xs cursor-pointer" onclick="abrirModal(this.src)">
-      <p class="precio">$350.000</p>
-      <button class="btn">Agregar al carrito</button>
-    </div>
-
-    <div class="producto">
-      <h2>JABÓN TRANSPARENTE</h2>
-      <img src="images/producto14-flyer.png" alt="JABÓN TRANSPARENTE Flyer" class="w-full max-w-xs cursor-pointer" onclick="abrirModal(this.src)">
-      <img src="images/producto14-nutricional.png" alt="JABÓN TRANSPARENTE Tabla Nutricional" class="w-full max-w-xs cursor-pointer" onclick="abrirModal(this.src)">
-      <p class="precio">$90.000</p>
-      <button class="btn">Agregar al carrito</button>
-    </div>
-
-    <div class="producto">
-      <h2>JABÓN CON LECHE DE CABRA</h2>
-      <img src="images/producto15-flyer.png" alt="JABÓN CON LECHE DE CABRA Flyer" class="w-full max-w-xs cursor-pointer" onclick="abrirModal(this.src)">
-      <img src="images/producto15-nutricional.png" alt="JABÓN CON LECHE DE CABRA Tabla Nutricional" class="w-full max-w-xs cursor-pointer" onclick="abrirModal(this.src)">
-      <p class="precio">$90.000</p>
-      <button class="btn">Agregar al carrito</button>
-    </div>
-
-    <div class="producto">
-      <h2>DENTRÍFICO GANOFRESH</h2>
-      <img src="images/producto16-flyer.png" alt="DENTRÍFICO GANOFRESH Flyer" class="w-full max-w-xs cursor-pointer" onclick="abrirModal(this.src)">
-      <img src="images/producto16-nutricional.png" alt="DENTRÍFICO GANOFRESH Tabla Nutricional" class="w-full max-w-xs cursor-pointer" onclick="abrirModal(this.src)">
-      <p class="precio">$90.000</p>
-      <button class="btn">Agregar al carrito</button>
-    </div>
-
-    <div class="producto">
-      <h2>ACONDICIONADOR PIEL Y BRILLO</h2>
-      <img src="images/producto17-flyer.png" alt="ACONDICIONADOR PIEL Y BRILLO Flyer" class="w-full max-w-xs cursor-pointer" onclick="abrirModal(this.src)">
-      <img src="images/producto17-nutricional.png" alt="ACONDICIONADOR PIEL Y BRILLO Tabla Nutricional" class="w-full max-w-xs cursor-pointer" onclick="abrirModal(this.src)">
-      <p class="precio">$95.000</p>
-      <button class="btn">Agregar al carrito</button>
-    </div>
-
-    <div class="producto">
-      <h2>SHAMPOO PIEL Y BRILLO</h2>
-      <img src="images/producto18-flyer.png" alt="SHAMPOO PIEL Y BRILLO Flyer" class="w-full max-w-xs cursor-pointer" onclick="abrirModal(this.src)">
-      <img src="images/producto18-nutricional.png" alt="SHAMPOO PIEL Y BRILLO Tabla Nutricional" class="w-full max-w-xs cursor-pointer" onclick="abrirModal(this.src)">
-      <p class="precio">$95.000</p>
-      <button class="btn">Agregar al carrito</button>
-    </div>
-
-    <div class="producto">
-      <h2>EXFOLIANTE PIE Y BRILLO</h2>
-      <img src="images/producto19-flyer.png" alt="EXFOLIANTE PIE Y BRILLO Flyer" class="w-full max-w-xs cursor-pointer" onclick="abrirModal(this.src)">
-      <img src="images/producto19-nutricional.png" alt="EXFOLIANTE PIE Y BRILLO Tabla Nutricional" class="w-full max-w-xs cursor-pointer" onclick="abrirModal(this.src)">
-      <p class="precio">$95.000</p>
-      <button class="btn">Agregar al carrito</button>
-   </div>
-
-  <script>
-  function abrirModal(src) {
-    document.getElementById('imagenModal').src = src;
-    document.getElementById('modalImagen').classList.remove('hidden');
-  }
-
-  function cerrarModal() {
-    document.getElementById('modalImagen').classList.add('hidden');
-  }
-</script>
-  
-  <aside id="carrito" class="fixed top-0 right-0 w-80 h-full bg-gray-900 text-white shadow-2xl p-4 hidden">
-    <h2 class="text-2xl font-bold mb-4">Tu carrito</h2>
-    <ul id="lista-carrito" class="space-y-2"></ul>
-    <p class="mt-4 text-lg font-semibold">Total: $<span id="total">0</span></p>
-    <label class="block mt-4">
-      <span class="text-sm">Código de descuento:</span>
-      <input type="text" id="descuentoInput" class="w-full p-2 mt-1 rounded bg-black border border-yellow-500 text-white" placeholder="Ej. GANOSALUD10">
-    </label>
-    <button onclick="aplicarDescuento()" class="mt-2 bg-yellow-500 text-black px-4 py-2 rounded">Aplicar Descuento</button>
-    <div class="mt-6">
-      <h3 class="font-semibold">Métodos de pago:</h3>
-      <ul class="text-sm mt-2">
-        <li>💳 BANCOLOMBIA AHORROS: 31849419741 Paola Andrea Castro Rojas</li>
+  <!-- Sección final: cuentas y carrito -->
+  <div class="bg-[#f7e7ef] p-4 rounded-lg shadow-inner mt-10">
+    <h3 class="text-xl font-bold text-[#531d38] mb-2">Datos para pago</h3>
+    <ul class="text-gray-800 list-disc list-inside">
+       <li>💳 BANCOLOMBIA AHORROS: 31849419741 Paola Andrea Castro Rojas</li>
         <li>🏦 DAVIVIENDA AHORROS: 488419430878 Paola Andrea Castro Rojas</li>
         <li>📲 NEQUI: 3177138722</li>
-      </ul>
+    </ul>
+    <p class="text-sm text-gray-600 mt-2">¡Envía tu comprobante para confirmar el envío!</p>
+    <div class="mt-4 text-center">
+      <a href="https://wa.me/573106319319" class="inline-block bg-[#531d38] text-white px-4 py-2 rounded-lg shadow-md hover:bg-[#6f2c50] transition">🛒 Ir al carrito (WhatsApp)</a>
     </div>
-    <button onclick="vaciarCarrito()" class="mt-6 text-red-400 underline">Vaciar carrito</button>
-  </aside>
+  </div>
+</main>
 
-  <button onclick="toggleCarrito()" class="fixed bottom-6 right-6 bg-yellow-500 text-black p-4 rounded-full shadow-xl z-50">🛒</button>
-</body>
-</html>
+<script>
+  function openModal(src) {
+    const modal = document.getElementById('imageModal');
+    const modalImage = document.getElementById('modalImage');
+    modalImage.src = src;
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+  }
+
+  function closeModal() {
+    const modal = document.getElementById('imageModal');
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+  }
+</script>
