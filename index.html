@@ -84,55 +84,154 @@
   </div>
 </div>
 
-<main class="p-4">
-  <!-- Producto 1 -->
-  <div class="bg-white rounded-lg shadow-lg p-4 mb-6">
-    <img src="images/colageno-rosado.png" alt="Colágeno Hidrolizado Rosado" class="mx-auto w-40 cursor-pointer" onclick="openModal(this.src)" />
-    <h2 class="text-xl font-semibold text-center text-[#531d38] mt-2">Colágeno Hidrolizado Rosado</h2>
-    <p class="text-center text-gray-700 font-medium">$ 85.000</p>
-    <img src="images/nutricional-rosado.png" alt="Tabla nutricional rosado" class="mx-auto mt-2 w-32 cursor-pointer" onclick="openModal(this.src)" />
-  </div>
+<main class="p-4" id="productos"></main>
 
-  <!-- Producto 2 -->
-  <div class="bg-white rounded-lg shadow-lg p-4 mb-6">
-    <img src="images/colageno-dorado.png" alt="Colágeno Hidrolizado Dorado" class="mx-auto w-40 cursor-pointer" onclick="openModal(this.src)" />
-    <h2 class="text-xl font-semibold text-center text-[#531d38] mt-2">Colágeno Hidrolizado Dorado</h2>
-    <p class="text-center text-gray-700 font-medium">$ 85.000</p>
-    <img src="images/nutricional-dorado.png" alt="Tabla nutricional dorado" class="mx-auto mt-2 w-32 cursor-pointer" onclick="openModal(this.src)" />
+<!-- Sección final: cuentas y carrito -->
+<div class="bg-[#f7e7ef] p-4 rounded-lg shadow-inner mt-10">
+  <h3 class="text-xl font-bold text-[#531d38] mb-2">Datos para pago</h3>
+  <ul class="text-gray-800 list-disc list-inside">
+    <li>💳 BANCOLOMBIA AHORROS: 31849419741 Paola Andrea Castro Rojas</li>
+    <li>🏦 DAVIVIENDA AHORROS: 488419430878 Paola Andrea Castro Rojas</li>
+    <li>📲 NEQUI: 3177138722</li>
+  </ul>
+  <p class="text-sm text-gray-600 mt-2">¡Envía tu comprobante para confirmar el envío!</p>
+  <div class="mt-4 text-center">
+    <a href="https://wa.me/573106319319" class="inline-block bg-[#531d38] text-white px-4 py-2 rounded-lg shadow-md hover:bg-[#6f2c50] transition">🛒 Ir al carrito (WhatsApp)</a>
   </div>
-
-  <!-- Producto 3 -->
-  <div class="bg-white rounded-lg shadow-lg p-4 mb-6">
-    <img src="images/colageno-capsulas.png" alt="Colágeno Cápsulas" class="mx-auto w-40 cursor-pointer" onclick="openModal(this.src)" />
-    <h2 class="text-xl font-semibold text-center text-[#531d38] mt-2">Colágeno Cápsulas</h2>
-    <p class="text-center text-gray-700 font-medium">$ 65.000</p>
-    <img src="images/nutricional-capsulas.png" alt="Tabla nutricional cápsulas" class="mx-auto mt-2 w-32 cursor-pointer" onclick="openModal(this.src)" />
-  </div>
-
-  <!-- Producto 4 -->
-  <div class="bg-white rounded-lg shadow-lg p-4 mb-6">
-    <img src="images/fibra.png" alt="Fibra Natural Premium" class="mx-auto w-40 cursor-pointer" onclick="openModal(this.src)" />
-    <h2 class="text-xl font-semibold text-center text-[#531d38] mt-2">Fibra Natural Premium</h2>
-    <p class="text-center text-gray-700 font-medium">$ 75.000</p>
-    <img src="images/nutricional-fibra.png" alt="Tabla nutricional fibra" class="mx-auto mt-2 w-32 cursor-pointer" onclick="openModal(this.src)" />
-  </div>
-
-  <!-- Sección final: cuentas y carrito -->
-  <div class="bg-[#f7e7ef] p-4 rounded-lg shadow-inner mt-10">
-    <h3 class="text-xl font-bold text-[#531d38] mb-2">Datos para pago</h3>
-    <ul class="text-gray-800 list-disc list-inside">
-       <li>💳 BANCOLOMBIA AHORROS: 31849419741 Paola Andrea Castro Rojas</li>
-        <li>🏦 DAVIVIENDA AHORROS: 488419430878 Paola Andrea Castro Rojas</li>
-        <li>📲 NEQUI: 3177138722</li>
-    </ul>
-    <p class="text-sm text-gray-600 mt-2">¡Envía tu comprobante para confirmar el envío!</p>
-    <div class="mt-4 text-center">
-      <a href="https://wa.me/573106319319" class="inline-block bg-[#531d38] text-white px-4 py-2 rounded-lg shadow-md hover:bg-[#6f2c50] transition">🛒 Ir al carrito (WhatsApp)</a>
-    </div>
-  </div>
-</main>
+</div>
 
 <script>
+  const productos = [
+    {
+      nombre: "CAFÉ CLÁSICO",
+      precio: 135000,
+      flyer: "images/producto1-flyer.png",
+      nutricional: "images/producto1-nutricional.png"
+    },
+    {
+      nombre: "CAFÉ CAPUCHINO 3EN1",
+      precio: 135000,
+      flyer: "images/producto2-flyer.png",
+      nutricional: "images/producto2-nutricional.png"
+    },
+    {
+      nombre: "CAFÉ LATERICO",
+      precio: 145000,
+      flyer: "images/producto3-flyer.png",
+      nutricional: "images/producto3-nutricional.png"
+    },
+    {
+      nombre: "CAFÉ MOCHARICO",
+      precio: 145000,
+      flyer: "images/producto4-flyer.png",
+      nutricional: "images/producto4-nutricional.png"
+    },
+    {
+      nombre: "CAFÉ PREMIUM LUVOCO",
+      precio: 145000,
+      flyer: "images/producto5-flyer.png",
+      nutricional: "images/producto5-nutricional.png"
+    },
+    {
+      nombre: "RESKINE COLLAGEN",
+      precio: 250000,
+      flyer: "images/producto6-flyer.png",
+      nutricional: "images/producto6-nutricional.png"
+    },
+    {
+      nombre: "SCHOKOLADE",
+      precio: 150000,
+      flyer: "images/producto7-flyer.png",
+      nutricional: "images/producto7-nutricional.png"
+    },
+    {
+      nombre: "SHOKORICO",
+      precio: 150000,
+      flyer: "images/producto8-flyer.png",
+      nutricional: "images/producto8-nutricional.png"
+    },
+    {
+      nombre: "CEREAL CON SPIRULINA",
+      precio: 145000,
+      flyer: "images/producto9-flyer.png",
+      nutricional: "images/producto9-nutricional.png"
+    },
+    {
+      nombre: "TEA CON ROOIBOS",
+      precio: 145000,
+      flyer: "images/producto10-flyer.png",
+      nutricional: "images/producto10-nutricional.png"
+    },
+    {
+      nombre: "CÁPSULAS EXCELLIUM",
+      precio: 295000,
+      flyer: "images/producto11-flyer.png",
+      nutricional: "images/producto11-nutricional.png"
+    },
+    {
+      nombre: "CÁPSULAS GANODERMA",
+      precio: 295000,
+      flyer: "images/producto12-flyer.png",
+      nutricional: "images/producto12-nutricional.png"
+    },
+    {
+      nombre: "CÁPSULAS CORDYGOLD",
+      precio: 350000,
+      flyer: "images/producto13-flyer.png",
+      nutricional: "images/producto13-nutricional.png"
+    },
+    {
+      nombre: "JABÓN TRANSPARENTE",
+      precio: 90000,
+      flyer: "images/producto14-flyer.png",
+      nutricional: "images/producto14-nutricional.png"
+    },
+    {
+      nombre: "JABÓN CON LECHE DE CABRA",
+      precio: 90000,
+      flyer: "images/producto15-flyer.png",
+      nutricional: "images/producto15-nutricional.png"
+    },
+    {
+      nombre: "DENTRÍFICO GANOFRESH",
+      precio: 90000,
+      flyer: "images/producto16-flyer.png",
+      nutricional: "images/producto16-nutricional.png"
+    },
+    {
+      nombre: "ACONDICIONADOR PIEL Y BRILLO",
+      precio: 95000,
+      flyer: "images/producto17-flyer.png",
+      nutricional: "images/producto17-nutricional.png"
+    },
+    {
+      nombre: "SHAMPOO PIEL Y BRILLO",
+      precio: 95000,
+      flyer: "images/producto18-flyer.png",
+      nutricional: "images/producto18-nutricional.png"
+    },
+    {
+      nombre: "EXFOLIANTE PIE Y BRILLO",
+      precio: 95000,
+      flyer: "images/producto19-flyer.png",
+      nutricional: "images/producto19-nutricional.png"
+    }
+  ];
+
+  const contenedor = document.getElementById("productos");
+
+  productos.forEach((p) => {
+    const card = document.createElement("div");
+    card.className = "bg-white rounded-lg shadow-lg p-4 mb-6";
+    card.innerHTML = `
+      <img src="${p.flyer}" alt="${p.nombre}" class="mx-auto w-40 cursor-pointer" onclick="openModal(this.src)" />
+      <h2 class="text-xl font-semibold text-center text-[#531d38] mt-2">${p.nombre}</h2>
+      <p class="text-center text-gray-700 font-medium">$ ${p.precio.toLocaleString()}</p>
+      <img src="${p.nutricional}" alt="Tabla nutricional de ${p.nombre}" class="mx-auto mt-2 w-32 cursor-pointer" onclick="openModal(this.src)" />
+    `;
+    contenedor.appendChild(card);
+  });
+
   function openModal(src) {
     const modal = document.getElementById('imageModal');
     const modalImage = document.getElementById('modalImage');
@@ -147,3 +246,6 @@
     modal.classList.remove('flex');
   }
 </script>
+
+</body>
+</html>
